@@ -1,0 +1,53 @@
+{{# if products }}
+    <div class="row">
+        <div class="col-sm-7 col-md-7 col-md-offset-3 col-sm-offset-3">
+            <h2>Shopping Cart</h2>
+            <br>
+            <ul class="list-group">
+                {{# each products }}
+                    <li class="list-group-item">
+                        <strong>Title: {{ this.item.title }} | </strong>
+                        <strong>Quantity: 
+                            <a href="/shop/reduce/{{this.item._id}}" type="button" class="btn btn-link btn-xs">
+								<span class="glyphicon glyphicon-minus"> </span>
+							</a>
+                            {{ this.qty }}
+                            <a href="/shop/increase/{{this.item._id}}" type="button" class="btn btn-link btn-xs">
+								<span class="glyphicon glyphicon-plus"> </span>
+							</a>
+                        </strong>
+                        <strong>| Price: ${{ this.price }} | </strong>
+                        <a href="/shop/remove/{{this.item._id}}" type="button" class="btn btn-link btn-xs">
+                            <span class="glyphicon glyphicon-remove"> </span>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7 col-md-7 col-md-offset-3 col-sm-offset-3">
+            <strong>Total: ${{ totalPrice }}</strong>
+            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7 col-md-7 col-md-offset-3 col-sm-offset-3">
+            <a href="/" type="button" class="btn btn-primary">Continue Shopping</a>
+            <a href="/shop/checkout" type="button" class="btn btn-primary">Checkout</a>
+        </div>
+    </div>
+{{ else }}
+    <div class="row">
+        <div class="col-sm-7 col-md-7 col-md-offset-3 col-sm-offset-3">
+            <h2>No Items in Cart</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7 col-md-7 col-md-offset-3 col-sm-offset-3">
+          <a href="/" type="button" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+    
+{{/if}}
+
